@@ -1,0 +1,82 @@
+{
+  "volumes": null,
+  "id": "/!LOGSTASHNAME!",
+  "cmd": null,
+  "args": [
+    "-e",
+    "input { beats { port=> 10514 } } output { elasticsearch { hosts => '!ELASTICEXECUTORNAME!.!ELASTICNAME!.mesos:1025' } }",
+    "-w",
+    "1",
+    "-b",
+    "125",
+    "-u",
+    "5",
+    "--verbose",
+    "--allow-env"
+  ],
+  "user": null,
+  "env": null,
+  "instances": 3,
+  "cpus": 0.1,
+  "mem": 512,
+  "disk": 0,
+  "gpus": 0,
+  "executor": null,
+  "constraints": null,
+  "fetch": null,
+  "storeUrls": null,
+  "backoffSeconds": 1,
+  "backoffFactor": 1.15,
+  "maxLaunchDelaySeconds": 3600,
+  "container": {
+    "docker": {
+      "image": "logstash:2.3.4",
+      "forcePullImage": false,
+      "privileged": false,
+      "network": "HOST"
+    }
+  },
+  "healthChecks": [
+    {
+      "protocol": "COMMAND",
+      "command": {
+        "value": "pgrep java && exit 0 || exit 1"
+      },
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3
+    }
+  ],
+  "readinessChecks": null,
+  "dependencies": null,
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 1,
+    "maximumOverCapacity": 1
+  },
+  "labels": {
+    "DCOS_PACKAGE_RELEASE": "0",
+    "DCOS_PACKAGE_SOURCE": "https://universe.mesosphere.com/repo",
+    "DCOS_PACKAGE_METADATA": "eyJwYWNrYWdpbmdWZXJzaW9uIjoiMy4wIiwibmFtZSI6ImxvZ3N0YXNoIiwidmVyc2lvbiI6IjIuMy40IiwibWFpbnRhaW5lciI6Imh0dHBzOi8vZGNvcy5pby9jb21tdW5pdHkiLCJkZXNjcmlwdGlvbiI6IkRDT1MgaW1wbGVtZW50YXRpb24gb2YgdGhlIExvZ3N0YXNoLiIsInRhZ3MiOlsibG9nc3Rhc2giLCJtb25pdG9yaW5nIiwibG9nZ2luZyIsImVsayJdLCJzZWxlY3RlZCI6ZmFsc2UsInNjbSI6Imh0dHBzOi8vZ2l0aHViLmNvbS9lbGFzdGljL2xvZ3N0YXNoLmdpdCIsIndlYnNpdGUiOiJodHRwczovL2dpdGh1Yi5jb20vZWxhc3RpYy9sb2dzdGFzaCIsImZyYW1ld29yayI6ZmFsc2UsInByZUluc3RhbGxOb3RlcyI6IkxvZ3N0YXNoIG9uIERDL09TIGlzIGluIGFscGhhIGFuZCB0aGVyZSBtYXkgYmUgYnVncywgaW5jb21wbGV0ZSBmZWF0dXJlcywgaW5jb3JyZWN0IGRvY3VtZW50YXRpb24gb3Igb3RoZXIgZGlzY3JlcGFuY2llcy4iLCJwb3N0SW5zdGFsbE5vdGVzIjoiTG9nc3Rhc2ggaXMgc3RhZ2luZy4gQ2hlY2sgdGhlIERDL09TIFVJIGZvciBzdGF0dXMuIiwibGljZW5zZXMiOlt7Im5hbWUiOiJBcGFjaGUgTGljZW5zZSBWZXJzaW9uIDIuMCIsInVybCI6Imh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9lbGFzdGljL2xvZ3N0YXNoL21hc3Rlci9MSUNFTlNFIn1dLCJpbWFnZXMiOnsiaWNvbi1zbWFsbCI6Imh0dHBzOi8vZG93bmxvYWRzLm1lc29zcGhlcmUuY29tL3VuaXZlcnNlL2Fzc2V0cy9pY29uLXNlcnZpY2UtbG9nc3Rhc2gtc21hbGwucG5nIiwiaWNvbi1tZWRpdW0iOiJodHRwczovL2Rvd25sb2Fkcy5tZXNvc3BoZXJlLmNvbS91bml2ZXJzZS9hc3NldHMvaWNvbi1zZXJ2aWNlLWxvZ3N0YXNoLW1lZGl1bS5wbmciLCJpY29uLWxhcmdlIjoiaHR0cHM6Ly9kb3dubG9hZHMubWVzb3NwaGVyZS5jb20vdW5pdmVyc2UvYXNzZXRzL2ljb24tc2VydmljZS1sb2dzdGFzaC1sYXJnZS5wbmcifX0=",
+    "DCOS_PACKAGE_REGISTRY_VERSION": "3.0",
+    "DCOS_SERVICE_NAME": "logstash",
+    "DCOS_PACKAGE_VERSION": "2.3.4",
+    "DCOS_PACKAGE_NAME": "logstash",
+    "DCOS_PACKAGE_IS_FRAMEWORK": "false"
+  },
+  "acceptedResourceRoles": null,
+  "residency": null,
+  "secrets": null,
+  "taskKillGracePeriodSeconds": null,
+  "portDefinitions": [
+    {
+      "protocol": "tcp",
+      "port": 10514
+    },
+    {
+      "protocol": "tcp",
+      "port": 10011
+    }
+  ],
+  "requirePorts": true
+}

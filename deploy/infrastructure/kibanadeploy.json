@@ -1,0 +1,84 @@
+{
+  "volumes": null,
+  "id": "/kibana",
+  "cmd": null,
+  "args": [
+    "-e",
+    "http://!ELASTICEXECUTORNAME!.!ELASTICNAME!.mesos:1025",
+    "-p",
+    "5601"
+  ],
+  "user": null,
+  "env": null,
+  "instances": 1,
+  "cpus": 0.1,
+  "mem": 512,
+  "disk": 0,
+  "gpus": 0,
+  "executor": null,
+  "constraints": null,
+  "fetch": null,
+  "storeUrls": null,
+  "backoffSeconds": 1,
+  "backoffFactor": 1.15,
+  "maxLaunchDelaySeconds": 3600,
+  "container": {
+    "docker": {
+      "image": "kibana:4.5.3",
+      "forcePullImage": false,
+      "privileged": false,
+      "portMappings": [
+        {
+          "containerPort": 5601,
+          "protocol": "tcp",
+          "servicePort": 10000
+        }
+      ],
+      "network": "BRIDGE"
+    }
+  },
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "path": "/",
+      "gracePeriodSeconds": 120,
+      "intervalSeconds": 30,
+      "timeoutSeconds": 5,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "readinessChecks": null,
+  "dependencies": null,
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 1,
+    "maximumOverCapacity": 1
+  },
+  "labels": {
+    "DCOS_PACKAGE_RELEASE": "0",
+    "HAPROXY_0_MODE": "http",
+    "DCOS_SERVICE_SCHEME": "http",
+    "DCOS_PACKAGE_SOURCE": "https://universe.mesosphere.com/repo",
+    "HAPROXY_GROUP": "external",
+    "DCOS_PACKAGE_METADATA": "eyJwYWNrYWdpbmdWZXJzaW9uIjoiMy4wIiwibmFtZSI6ImtpYmFuYSIsInZlcnNpb24iOiI0LjUuMyIsIm1haW50YWluZXIiOiJodHRwczovL2Rjb3MuaW8vY29tbXVuaXR5IiwiZGVzY3JpcHRpb24iOiJEQ09TIGltcGxlbWVudGF0aW9uIG9mIHRoZSBLaWJhbmEsIHJ1bm5pbmcgb24gdGhlIEVsYXN0aWNzZWFyY2ggZnJhbWV3b3JrLiIsInRhZ3MiOlsia2liYW5hIiwibW9uaXRvcmluZyIsImxvZ2dpbmciXSwic2VsZWN0ZWQiOmZhbHNlLCJzY20iOiJodHRwczovL2dpdGh1Yi5jb20vZWxhc3RpYy9raWJhbmEuZ2l0Iiwid2Vic2l0ZSI6Imh0dHBzOi8vZ2l0aHViLmNvbS9lbGFzdGljL2tpYmFuYSIsImZyYW1ld29yayI6ZmFsc2UsInByZUluc3RhbGxOb3RlcyI6IktpYmFuYSBvbiBEQy9PUyBpcyBpbiBhbHBoYSBhbmQgdGhlcmUgbWF5IGJlIGJ1Z3MsIGluY29tcGxldGUgZmVhdHVyZXMsIGluY29ycmVjdCBkb2N1bWVudGF0aW9uIG9yIG90aGVyIGRpc2NyZXBhbmNpZXMuIiwicG9zdEluc3RhbGxOb3RlcyI6IktpYmFuYSBpcyBzdGFnaW5nLiBDaGVjayB0aGUgREMvT1MgVUkgZm9yIHN0YXR1cy4iLCJsaWNlbnNlcyI6W3sibmFtZSI6IkFwYWNoZSBMaWNlbnNlIFZlcnNpb24gMi4wIiwidXJsIjoiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2VsYXN0aWMva2liYW5hL21hc3Rlci9MSUNFTlNFLm1kIn1dLCJpbWFnZXMiOnsiaWNvbi1zbWFsbCI6Imh0dHBzOi8vczMuYW1hem9uYXdzLmNvbS9kb3dubG9hZHMubWVzb3NwaGVyZS5pby91bml2ZXJzZS9hc3NldHMvaWNvbi1zZXJ2aWNlLWtpYmFuYS1zbWFsbC5wbmciLCJpY29uLW1lZGl1bSI6Imh0dHBzOi8vczMuYW1hem9uYXdzLmNvbS9kb3dubG9hZHMubWVzb3NwaGVyZS5pby91bml2ZXJzZS9hc3NldHMvaWNvbi1zZXJ2aWNlLWtpYmFuYS1tZWRpdW0ucG5nIiwiaWNvbi1sYXJnZSI6Imh0dHBzOi8vczMuYW1hem9uYXdzLmNvbS9kb3dubG9hZHMubWVzb3NwaGVyZS5pby91bml2ZXJzZS9hc3NldHMvaWNvbi1zZXJ2aWNlLWtpYmFuYS1sYXJnZS5wbmcifX0=",
+    "DCOS_PACKAGE_REGISTRY_VERSION": "3.0",
+    "DCOS_SERVICE_NAME": "kibana",
+    "DCOS_SERVICE_PORT_INDEX": "0",
+    "DCOS_PACKAGE_VERSION": "4.5.3",
+    "DCOS_PACKAGE_NAME": "kibana",
+    "DCOS_PACKAGE_IS_FRAMEWORK": "false",
+    "HAPROXY_0_VHOST": "kibana.julien.work"
+  },
+  "acceptedResourceRoles": null,
+  "residency": null,
+  "secrets": null,
+  "taskKillGracePeriodSeconds": null,
+  "portDefinitions": [
+    {
+      "port": 10000,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ],
+  "requirePorts": true
+}

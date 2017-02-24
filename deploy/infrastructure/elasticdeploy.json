@@ -1,0 +1,94 @@
+{
+  "id": "/!ELASTICNAME!",
+  "volumes": null,
+  "cmd": null,
+  "args": [
+    "--zookeeperMesosUrl",
+    "zk://master.mesos:2181/mesos",
+    "--zookeeperMesosTimeout",
+    "20000",
+    "--webUiPort",
+    "31105",
+    "--frameworkFailoverTimeout",
+    "2592000.0",
+    "--frameworkName",
+    "!ELASTICNAME!",
+    "--elasticsearchNodes",
+    "3",
+    "--elasticsearchClusterName",
+    "mesos-ha",
+    "--elasticsearchCpu",
+    "1.0",
+    "--elasticsearchDisk",
+    "1024",
+    "--elasticsearchRam",
+    "2048",
+    "--executorForcePullImage",
+    "false",
+    "--executorName",
+    "!ELASTICEXECUTORNAME!",
+    "--elasticsearchDockerImage",
+    "elasticsearch:2.4.1"
+  ],
+  "user": null,
+  "env": {
+    "JAVA_OPTS": "-Xms128m -Xmx256m"
+  },
+  "instances": 1,
+  "cpus": 0.2,
+  "mem": 512,
+  "disk": 0,
+  "gpus": 0,
+  "executor": null,
+  "constraints": null,
+  "fetch": null,
+  "storeUrls": null,
+  "backoffSeconds": 1,
+  "backoffFactor": 1.15,
+  "maxLaunchDelaySeconds": 3600,
+  "container": {
+    "docker": {
+      "image": "mesos/elasticsearch-scheduler:1.0.1",
+      "forcePullImage": false,
+      "privileged": false,
+      "network": "HOST"
+    }
+  },
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "path": "/",
+      "gracePeriodSeconds": 120,
+      "intervalSeconds": 30,
+      "timeoutSeconds": 5,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "readinessChecks": null,
+  "dependencies": null,
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 1,
+    "maximumOverCapacity": 1
+  },
+  "labels": {
+    "DCOS_PACKAGE_RELEASE": "2",
+    "DCOS_PACKAGE_SOURCE": "https://universe.mesosphere.com/repo",
+    "DCOS_PACKAGE_METADATA": "eyJwYWNrYWdpbmdWZXJzaW9uIjoiMy4wIiwibmFtZSI6ImVsYXN0aWNzZWFyY2giLCJ2ZXJzaW9uIjoiMS4wLjEtMiIsIm1haW50YWluZXIiOiJwbndAdHJpZm9yay5jb20iLCJkZXNjcmlwdGlvbiI6IkRDT1MgaW1wbGVtZW50YXRpb24gb2YgdGhlIE1lc29zLUVsYXN0aWNzZWFyY2ggZnJhbWV3b3JrIiwidGFncyI6WyJlbGFzdGljIiwibW9uaXRvcmluZyIsImRlYnVnIl0sInNlbGVjdGVkIjpmYWxzZSwic2NtIjoiaHR0cHM6Ly9naXRodWIuY29tL21lc29zL2VsYXN0aWNzZWFyY2guZ2l0Iiwid2Vic2l0ZSI6Imh0dHBzOi8vZ2l0aHViLmNvbS9tZXNvcy9lbGFzdGljc2VhcmNoIiwiZnJhbWV3b3JrIjp0cnVlLCJwcmVJbnN0YWxsTm90ZXMiOiJUaGUgRWxhc3RpY1NlYXJjaCBEQ09TIFNlcnZpY2UgaW1wbGVtZW50YXRpb24gaXMgYWxwaGEgYW5kIHRoZXJlIG1heSBiZSBidWdzLCBpbmNvbXBsZXRlIGZlYXR1cmVzLCBpbmNvcnJlY3QgZG9jdW1lbnRhdGlvbiBvciBvdGhlciBkaXNjcmVwYW5jaWVzLiIsInBvc3RJbnN0YWxsTm90ZXMiOiJFbGFzdGljc2VhcmNoIGlzIHN0YWdpbmcuIENoZWNrIE1hcmF0aG9uIGFuZCB0aGUgRVMgbWFuYWdlbWVudCBmcm9udC1lbmQgZm9yIHN0YXR1cy4iLCJsaWNlbnNlcyI6W3sibmFtZSI6IkFwYWNoZSBMaWNlbnNlIFZlcnNpb24gMi4wIiwidXJsIjoiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21lc29zL2VsYXN0aWNzZWFyY2gvbWFzdGVyL0xJQ0VOU0UifV0sImltYWdlcyI6eyJpY29uLXNtYWxsIjoiaHR0cHM6Ly9kb3dubG9hZHMubWVzb3NwaGVyZS5jb20vdW5pdmVyc2UvYXNzZXRzL2ljb24tc2VydmljZS1lbGFzdGljc2VhcmNoLXNtYWxsLnBuZyIsImljb24tbWVkaXVtIjoiaHR0cHM6Ly9kb3dubG9hZHMubWVzb3NwaGVyZS5jb20vdW5pdmVyc2UvYXNzZXRzL2ljb24tc2VydmljZS1lbGFzdGljc2VhcmNoLW1lZGl1bS5wbmciLCJpY29uLWxhcmdlIjoiaHR0cHM6Ly9kb3dubG9hZHMubWVzb3NwaGVyZS5jb20vdW5pdmVyc2UvYXNzZXRzL2ljb24tc2VydmljZS1lbGFzdGljc2VhcmNoLWxhcmdlLnBuZyJ9fQ==",
+    "DCOS_PACKAGE_REGISTRY_VERSION": "3.0",
+    "DCOS_PACKAGE_FRAMEWORK_NAME": "elasticsearch",
+    "DCOS_PACKAGE_VERSION": "1.0.1-2",
+    "DCOS_PACKAGE_NAME": "elasticsearch",
+    "DCOS_PACKAGE_IS_FRAMEWORK": "true"
+  },
+  "acceptedResourceRoles": null,
+  "residency": null,
+  "secrets": null,
+  "taskKillGracePeriodSeconds": null,
+  "portDefinitions": [
+    {
+      "protocol": "tcp",
+      "port": 31105
+    }
+  ],
+  "requirePorts": true
+}
