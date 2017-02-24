@@ -1,6 +1,6 @@
 {
   "volumes": null,
-  "id": "/kibana",
+  "id": "/!KIBANANAME!",
   "cmd": null,
   "args": [
     "-e",
