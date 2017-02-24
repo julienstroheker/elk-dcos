@@ -1,12 +1,12 @@
 #!/bin/bash
 
-wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.2.1-amd64.deb --no-check-certificate
-dpkg -i filebeat-5.2.1-amd64.deb
+sudo wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.2.1-amd64.deb --no-check-certificate
+sudo dpkg -i filebeat-5.2.1-amd64.deb
 
-mkdir -p /var/log/dcos
-mv /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.BAK
+sudo mkdir -p /var/log/dcos
+sudo mv /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.BAK
 
-tee /etc/filebeat/filebeat.yml <<-EOF 
+sudo tee /etc/filebeat/filebeat.yml <<-EOF 
 filebeat.prospectors:
 - input_type: log
   paths:
@@ -19,7 +19,7 @@ output.logstash:
    hosts: ["!LOGSTASHNAME!.marathon.mesos:10514"]
 EOF
 
-tee /etc/systemd/system/dcos-journalctl-filebeat.service<<-EOF 
+sudo tee /etc/systemd/system/dcos-journalctl-filebeat.service<<-EOF 
 [Unit]
 Description=DCOS journalctl parser to filebeat
 Wants=filebeat.service
@@ -59,7 +59,7 @@ ExecStartPre=journalctl --vacuum-size=10M
 WantedBy=multi-user.target
 EOF
 
-chmod 0755 /etc/systemd/system/dcos-journalctl-filebeat.service
-systemctl daemon-reload
-systemctl start dcos-journalctl-filebeat.service
-systemctl start filebeat
+sudo chmod 0755 /etc/systemd/system/dcos-journalctl-filebeat.service
+sudo systemctl daemon-reload
+sudo systemctl start dcos-journalctl-filebeat.service
+sudo systemctl start filebeat
