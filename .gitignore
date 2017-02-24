@@ -1,1 +1,3 @@
 deploy/yourkey/*
+
+!deploy/yourkey/PLACEyourKEYhere
