@@ -15,10 +15,11 @@ Project under development, tested and coded for Azure ACS
 ## How-to
 1. Clone this repo on the Master
 2. Copy your private key inside the folder deploy/yourKey
-3. Verify or replace the value inside the infrastructure/deploy.sh file
-4. Deploy Marathon-lb from the universe
-5. Execute `sh deploy.sh` from the infrastructure directory
-6. Execute `sh copyPrerequisitesNodes.sh` from the filebeat directory
+3. Make sure your private key have the chmod 600
+4. Verify or replace the value inside the infrastructure/deploy.sh file
+5. Deploy Marathon-lb from the universe
+6. Execute `sh deploy.sh` from the infrastructure directory
+7. Execute `sh copyPrerequisitesNodes.sh` from the filebeat directory
 
 
 ## Documentation
@@ -26,3 +27,13 @@ Project under development, tested and coded for Azure ACS
 * [Log Management in DC/OS with ELK](https://docs.mesosphere.com/1.8/administration/logging/elk/)
 * [Marathon REST API](https://docs.mesosphere.com/1.8/usage/marathon/rest-api)
 * [Monitoring](https://dcos.io/docs/1.8/administration/monitoring/)
+
+
+### TODO :
+
+* Comments the scripts
+* Aggregate to one and only script
+* CLean the output of the deploy.json script, hide the json answer
+* Smart lookup of the PrivateKey
+* Callback of the universe package deployment (Elastic, Logstash, Kibana)
+* Username for ssh in copyPrerequisitesNodes.sh
