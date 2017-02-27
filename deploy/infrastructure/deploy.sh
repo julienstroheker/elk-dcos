@@ -1,9 +1,10 @@
 #!/bin/bash
 ############## PARAMETERS #########################
-ELASTIC_NAME=elastic
+ELASTIC_NAME=elasticsearch
 ELASTIC_EXECUTOR_NAME=elasticsearch-executor
 LOGSTASH_NAME=logstash
 KIBANA_NAME=kibana
+KIBANA_FQDN=YOURPUBLICFQDN
 PRIVATE_KEY_NAME=TOFILL
 ############## PARAMETERS #########################
 
@@ -18,6 +19,7 @@ sed -i 's/!LOGSTASHNAME!/'${LOGSTASH_NAME}'/g' ../filebeat/deployFilebeatNodes.s
 sed -i 's/!ELASTICNAME!/'${ELASTIC_NAME}'/g' kibanadeploy.json
 sed -i 's/!ELASTICEXECUTORNAME!/'${ELASTIC_EXECUTOR_NAME}'/g' kibanadeploy.json
 sed -i 's/!KIBANANAME!/'${KIBANA_NAME}'/g' kibanadeploy.json
+sed -i 's/!KIBANAFQDN!/'${KIBANA_FQDN}'/g' kibanadeploy.json
 
 sed -i 's/!PRIVATEKEYNAME!/'${PRIVATE_KEY_NAME}'/g' ../filebeat/copyPrerequisitesNodes.sh
 

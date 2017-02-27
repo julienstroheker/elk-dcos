@@ -9,9 +9,5 @@ curl http://leader.mesos:1050/system/health/v1/nodes | jq '.nodes[].host_ip' | s
 
 cat nodes.txt | while read line
 do
-   ssh Julien@$line -o StrictHostKeyChecking=no -i ./yourKeys/!PRIVATEKEYNAME! < ./deployFilebeatNodes.sh
+   ssh Julien@$line -o StrictHostKeyChecking=no -i ../yourKey/!PRIVATEKEYNAME! < ./deployFilebeatNodes.sh
 done
-
-
-
-ssh Julien@$line -i dcosju2 -o StrictHostKeyChecking=no < hostname.sh
