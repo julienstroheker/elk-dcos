@@ -1,5 +1,5 @@
 #!/bin/bash
-rm ./yourKey/PLACEyourKEYhere
+rm ../yourKey/PLACEyourKEYhere
 
 ssh-add ../yourKey/!PRIVATEKEYNAME!
 # Will be prompted for you passphrase
