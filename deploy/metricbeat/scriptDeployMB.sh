@@ -5,7 +5,6 @@ sudo dpkg -i metricbeat-5.2.1-amd64.deb
 
 sudo mv /etc/metricbeat/metricbeat.yml /etc/metricbeat/metricbeat.yml.BAK
 
-
 sudo tee /etc/metricbeat/metricbeat.yml <<-EOF 
 metricbeat.modules:
 - module: system
@@ -27,12 +26,10 @@ metricbeat.modules:
   period: 10s
 output.logstash:
    hosts: ["!LOGSTASHNAME!.marathon.mesos:10514"] 
-#output.elasticsearch:
-#  hosts: ["!ELASTICEXECUTORNAME!.!ELASTICNAME!.mesos:1025"]
 EOF
 
-curl -XPUT 'http://!ELASTICEXECUTORNAME!.!ELASTICNAME!.mesos:1025/_template/metricbeat' -d@/etc/metricbeat/metricbeat.template.json
+#curl -XPUT 'http://!ELASTICEXECUTORNAME!.!ELASTICNAME!.mesos:1025/_template/metricbeat' -d@/etc/metricbeat/metricbeat.template.json
 
 sudo /etc/init.d/metricbeat start
 
-/usr/share/metricbeat/scripts/import_dashboards -es http://elasticsearch-executor.elasticsearch.mesos:1025
+#/usr/share/metricbeat/scripts/import_dashboards -es http://elasticsearch-executor.elasticsearch.mesos:1025
